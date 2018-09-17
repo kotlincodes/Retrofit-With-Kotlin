@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
 
-
-    val clientVerification: ApiInterface
+    var BASE_URL:String="https://jsonplaceholder.typicode.com/"
+    val getClient: ApiInterface
         get() {
 
             val gson = GsonBuilder()
@@ -20,7 +20,7 @@ object ApiClient {
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
             val retrofit = Retrofit.Builder()
-                    .baseUrl("https://jsonplaceholder.typicode.com/")
+                    .baseUrl(BASE_URL)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build()
